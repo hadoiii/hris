@@ -18,3 +18,4 @@ Route::get('/', function () {
 });
 
 Route::get('/karyawan', 'KaryawanController@index');
+Route::post('/karyawan/create', 'KaryawanController@create');

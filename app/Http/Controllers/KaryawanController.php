@@ -11,4 +11,10 @@ class KaryawanController extends Controller
         $data_karyawan = \App\Models\Karyawan::all();
         return view('karyawan.index', ['data_karyawan' => $data_karyawan]);
     }
+
+    public function create(Request $request)
+    {
+        \App\Models\Karyawan::create($request->all());
+        return redirect('/karyawan')->with('sukses', 'Data Berhasil Di-input!');
+    }
 }
