@@ -30,4 +30,11 @@ class KaryawanController extends Controller
         $karyawan->update($request->all());
         return redirect('/karyawan')->with('sukses', 'Data Berhasil Di-Update!');
     }
+
+    public function delete($id)
+    {
+        $karyawan = \App\Models\Karyawan::find($id);
+        $karyawan->delete();
+        return redirect('/karyawan')->with('sukses', 'Data Berhasil Dihapus!');
+    }
 }

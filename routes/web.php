@@ -21,3 +21,4 @@ Route::get('/karyawan', 'KaryawanController@index');
 Route::post('/karyawan/create', 'KaryawanController@create');
 Route::get('/karyawan/{id}/edit', 'KaryawanController@edit');
 Route::post('/karyawan/{id}/update', 'KaryawanController@update');
+Route::get('/karyawan/{id}/delete', 'KaryawanController@delete');

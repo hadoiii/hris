@@ -1,11 +1,6 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title></title>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
-    </head>
-    <body>
-        <div class="container">
+@extends('layouts.master')
+
+@section('content')
         <h1>EDIT DATA KARYAWAN</h1>
         <!-- Notifikasi Keberhasilan Proses Input -->
         @if(session('sukses'))
@@ -36,6 +31,7 @@
                             <input name="nm_pgil" type="text" class="form-control" placeholder="Nama Panggilan" value="{{$karyawan->nm_pgil}}">
                         </div>
                         <div class="mb 3">
+                            <label for="InputJenisKelamin" class="form-label">Jenis Kelamin</label>
                             <select name="jk" class="form-select" aria-label="Default select example">
                                 <option selected>Jenis Kelamin</option>
                                 <option value="Pria" @if($karyawan->jk == 'Pria') selected  @endif>Pria</option>
@@ -68,6 +64,7 @@
                             <input name="no_hp" type="text" class="form-control" placeholder="Nomor Handphone" value="{{$karyawan->no_hp}}">
                         </div>
                         <div class="mb 3">
+                            <label for="InputStatusPerkawinan" class="form-label">Status Perkawinan</label>
                             <select name="stts_kawin" class="form-select" aria-label="Default select example">
                                 <option selected>Status Perkawinan</option>
                                 <option value="Belum Menikah" @if($karyawan->stts_kawin == 'Belum Menikah') selected  @endif>Belum Menikah</option>
@@ -78,6 +75,7 @@
                         </div>
                         <br>
                         <div class="mb 3">
+                            <label for="InputAgama" class="form-label">Agama</label>
                             <select name="agama" class="form-select" aria-label="Default select example">
                                 <option selected>Agama</option>
                                 <option value="Islam" @if($karyawan->agama == 'Islam') selected  @endif>Islam</option>
@@ -90,6 +88,7 @@
                         </div>
                         <br>
                         <div class="mb 3">
+                            <label for="InputPendidikan" class="form-label">Pendidikan</label>
                             <select name="pddk" class="form-select" aria-label="Default select example">
                                 <option selected>Pendidikan</option>
                                 <option value="SMA / Sederajat" @if($karyawan->pddk == 'SMA / Sederajat') selected  @endif>SMA / Sederajat</option>
@@ -132,6 +131,7 @@
                             <input name="no_darurat" type="text" class="form-control" placeholder="Nomor yang bisa dihubungi dalam keadaan darurat" value="{{$karyawan->no_darurat}}">
                         </div>
                         <div class="mb 3">
+                            <label for="InputStatusPegawai" class="form-label">Status Kepegawaian</label>
                             <select name="stts_pegawai" class="form-select" aria-label="Default select example">
                                 <option selected>Status Kepegawaian</option>
                                 <option value="Tetap" @if($karyawan->stts_pegawai == 'Tetap') selected  @endif>Tetap</option>
@@ -142,6 +142,7 @@
                         </div>
                         <br>
                         <div class="mb 3">
+                            <label for="InputGolongan" class="form-label">Golongan</label>
                             <select name="golongan" class="form-select" aria-label="Default select example">
                                 <option selected>Golongan</option>
                                 <option value="I-A" @if($karyawan->golongan == 'I-A') selected  @endif>I-A</option>
@@ -189,7 +190,4 @@
                         </div>
                     </form>  
                 </div>
-            </div>    
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
-    </body>
-</html>
+@endsection
