@@ -33,6 +33,7 @@
                         <th>TANGGAL LAHIR</th>
                         <th>ALAMAT DOMISILI</th>
                         <th>EMAIL</th>
+                        <th>AKSI</th>
                     </tr>
                     @foreach($data_karyawan as $karyawan)
                     <tr>
@@ -43,6 +44,7 @@
                         <td>{{$karyawan->tgl_lahir}}</td>
                         <td>{{$karyawan->almt_domisili}}</td>
                         <td>{{$karyawan->email}}</td>
+                        <td><a href="/karyawan/{{$karyawan->id}}/edit" class="btn btn-warning btn-sm">Edit</a></td>
                     </tr>
                     @endforeach
                 </table>    
@@ -215,7 +217,7 @@
                             </div>
                             <div class="mb-3">
                                 <label for="InputTanggalAkhirKontrak" class="form-label">Tanggal Berakhir Kontrak (*Jika berstatus kontrak)</label>
-                                <input name="tgl_akhir_kontrak" type="text" class="form-control" placeholder="Tanggal Berakhir Kontrak">
+                                <input name="tgl_akhir_kontrak" type="date" class="form-control" placeholder="Tanggal Berakhir Kontrak">
                             </div>
                             <div class="mb-3">
                                 <label for="InputPenempatan" class="form-label">Penempatan</label>
