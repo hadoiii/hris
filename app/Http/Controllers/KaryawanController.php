@@ -6,9 +6,18 @@ use Illuminate\Http\Request;
 
 class KaryawanController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $data_karyawan = \App\Models\Karyawan::all();
+        /// Fitur Pencarian Data Karyawan
+        if($request->has('cari'))
+        {
+            $data_karyawan = \App\Models\Karyawan::where('nm_lkp', 'LIKE' , '%'.$request->cari.'%')->get();
+        }
+        else
+        {
+            $data_karyawan = \App\Models\Karyawan::all();
+        }
+        
         return view('karyawan.index', ['data_karyawan' => $data_karyawan]);
     }
 
