@@ -14,11 +14,17 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
+Route::get('/login', 'AuthController@login')->name('login');
+Route::post('/postlogin', 'AuthController@postlogin');
+Route::get('/logout', 'AuthController@logout');
 
-Route::get('/karyawan', 'KaryawanController@index');
-Route::post('/karyawan/create', 'KaryawanController@create');
-Route::get('/karyawan/{id}/edit', 'KaryawanController@edit');
-Route::post('/karyawan/{id}/update', 'KaryawanController@update');
-Route::get('/karyawan/{id}/delete', 'KaryawanController@delete');
+Route::group(['middleware' => 'auth'], function(){
+    Route::get('/dashboard', 'DashboardController@index')->middleware('auth');
+    Route::get('/karyawan', 'KaryawanController@index');
+    Route::post('/karyawan/create', 'KaryawanController@create');
+    Route::get('/karyawan/{id}/edit', 'KaryawanController@edit');
+    Route::post('/karyawan/{id}/update', 'KaryawanController@update');
+    Route::get('/karyawan/{id}/delete', 'KaryawanController@delete');
+});
