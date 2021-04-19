@@ -60,7 +60,7 @@
                             @foreach($data_karyawan as $karyawan)
                                 <tr>
                                     <td>{{$karyawan->nip}}</td>
-                                    <td>{{$karyawan->nm_lkp}}</td>
+                                    <td><a href="/karyawan/{{$karyawan->id}}/profile">{{$karyawan->nm_lkp}}</a></td>
                                     <td>{{$karyawan->jk}}</td>
                                     <td>{{$karyawan->tmp_lahir}}</td>
                                     <td>{{$karyawan->tgl_lahir}}</td>

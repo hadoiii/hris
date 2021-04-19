@@ -16,6 +16,11 @@
                             <form action="/karyawan/{{$karyawan->id}}/update" method="POST">
                             {{csrf_field()}}
                                 <div class="mb-3">
+                                    <label for="exampleInputEmail1" class="form-label">Avatar</label>
+                                    <input name="avatar" type="file" class="form-control">
+                                </div>
+                                
+                                <div class="mb-3">
                                     <label for="InputNIP" class="form-label">Nomor Induk Pegawai</label>
                                     <input name="nip" type="text" class="form-control" placeholder="Nomor Induk Pegawai" value="{{$karyawan->nip}}">
                                 </div>
@@ -214,7 +219,7 @@
 
             <div class="row">
                 <div class="col lg-12">
-                    <form action="/karyawan/{{$karyawan->id}}/update" method="POST">
+                    <form action="/karyawan/{{$karyawan->id}}/update" method="POST" enctype="multipart/form-data">
                         {{csrf_field()}}
                         <div class="mb-3">
                             <label for="InputNIP" class="form-label">Nomor Induk Pegawai</label>
@@ -381,10 +386,6 @@
                         <div class="mb-3">
                             <label for="InputPenempatan" class="form-label">Penempatan</label>
                             <input name="penempatan" type="text" class="form-control" placeholder="Penempatan" value="{{$karyawan->penempatan}}">
-                        </div>
-                        <div class="mb-3">
-                            <label for="InputTanggalInput" class="form-label">Diinput Tanggal :</label>
-                            <input name="created_at" type="date" class="form-control" placeholder="Tanggal Input" value="{{$karyawan->created_at}}">
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

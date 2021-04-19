@@ -37,6 +37,13 @@ class KaryawanController extends Controller
     {
         $karyawan = \App\Models\Karyawan::find($id);
         $karyawan->update($request->all());
+        /// INPUT AVATAR DARI EDIT FORM
+        if($request->hasFile('avatar'))
+        {
+            $request->file('avatar')->move('images/', $request->file('avatar')->getClientOriginalName());
+            $karyawan->avatar = $request->file('avatar')->getClientOriginalName();
+            $karyawan->save();
+        }
         return redirect('/karyawan')->with('sukses', 'Data Berhasil Di-Update!');
     }
 
@@ -45,5 +52,11 @@ class KaryawanController extends Controller
         $karyawan = \App\Models\Karyawan::find($id);
         $karyawan->delete();
         return redirect('/karyawan')->with('sukses', 'Data Berhasil Dihapus!');
+    }
+
+    public function profile($id)
+    {
+        $karyawan = \App\Models\Karyawan::find($id);
+        return view('karyawan.profile', ['karyawan' => $karyawan]);
     }
 }
