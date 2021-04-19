@@ -41,4 +41,13 @@ class Karyawan extends Model
             'created_at'
 
     ];
+
+    public function getAvatar()
+    {
+        if(!$this->avatar)
+        {
+            return asset('images/default.jpg');
+        }
+        return asset('images/'.$this->avatar);
+    }
 }
