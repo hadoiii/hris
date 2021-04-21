@@ -37,6 +37,7 @@ class Karyawan extends Model
             'tgl_masuk',
             'tgl_akhir_kontrak',
             'penempatan',
+            'user_id',
             'avatar',
             'created_at'
 

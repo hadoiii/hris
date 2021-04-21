@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class KaryawanController extends Controller
 {
@@ -23,7 +24,19 @@ class KaryawanController extends Controller
 
     public function create(Request $request)
     {
-        \App\Models\Karyawan::create($request->all());
+        /// INSERT KE TABEL USER
+        $user = new \App\Models\User;
+        $user->role = 'staf';
+        $user->name = $request->nm_lkp;
+        $user->email = $request->email;
+        $user->password = bcrypt('rahasia');
+        $user->remember_token = Str::random(60);
+        $user->save();
+
+        /// INSERT KE TABEL KARYAWAN
+        $request->request->add(['user_id' => $user->id]);
+        $karyawan = \App\Models\Karyawan::create($request->all());
+
         return redirect('/karyawan')->with('sukses', 'Data Berhasil Di-input!');
     }
 

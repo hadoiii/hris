@@ -42,6 +42,7 @@
               </p>
             </a>
           </li>
+          @if(auth()->user()->role == 'admin')
           <li class="nav-item">
             <a href="/karyawan" class="nav-link">
               <i class="nav-icon fas fa-user-tie"></i>
@@ -50,6 +51,7 @@
               </p>
             </a>
           </li>
+          @endif
           <li class="nav-item">
             <a href="/logout" class="nav-link">
               <i class="nav-icon fas fa-sign-out-alt"></i>
