@@ -24,6 +24,25 @@ class KaryawanController extends Controller
 
     public function create(Request $request)
     {
+        /// VALIDASI INPUT FORM DATA KARYAWAN
+        $this->validate($request,[
+            'nip' => 'required|unique:karyawan',
+            'nik' => 'required|unique:karyawan',
+            'nm_lkp' => 'required|min:5',
+            'jk' => 'required',
+            'tmp_lahir' => 'required',
+            'tgl_lahir' => 'required',
+            'almt_ktp' => 'required',
+            'almt_domisili' => 'required',
+            'email' => 'required|email|unique:users',
+            'no_hp' => 'required',
+            'agama' => 'required',
+            'no_darurat' => 'required',
+            'avatar' => 'mimes:jpg,jpeg,png',
+    
+    
+            ]);
+        
         /// INSERT KE TABEL USER
         $user = new \App\Models\User;
         $user->role = 'staf';
@@ -37,6 +56,13 @@ class KaryawanController extends Controller
         $request->request->add(['user_id' => $user->id]);
         $karyawan = \App\Models\Karyawan::create($request->all());
 
+        /// MENG-UPLOAD AVATAR DARI INDEX KARYAWAN
+        if($request->hasFile('avatar'))
+        {
+            $request->file('avatar')->move('images/', $request->file('avatar')->getClientOriginalName());
+            $karyawan->avatar = $request->file('avatar')->getClientOriginalName();
+            $karyawan->save();
+        }
         return redirect('/karyawan')->with('sukses', 'Data Berhasil Di-input!');
     }
 
@@ -50,6 +76,7 @@ class KaryawanController extends Controller
     {
         $karyawan = \App\Models\Karyawan::find($id);
         $karyawan->update($request->all());
+        
         /// INPUT AVATAR DARI EDIT FORM
         if($request->hasFile('avatar'))
         {
